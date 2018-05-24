@@ -13,22 +13,16 @@
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
+    <a class="toTop" href="javascript:;"></a>
    <div class="container">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img src="http://www.youtasc.com/shops/files/f9d5/f8e6/8a92/a73a/4ee0/0770/3f6d/4284/105a7166c9f24b4b805b959db9bf0150@mid.png">
-        </div>
-        <div class="swiper-slide">
-            <img  src="http://www.youtasc.com/shops/files/f9d5/f8e6/8a92/a73a/4ee0/0770/3f6d/4284/d5947d0b756041b1bc60dfd3e8f4fc44@mid.png">
-        </div>
-        <div class="swiper-slide"><img src="http://www.youtasc.com/shops/files/f9d5/f8e6/8a92/a73a/4ee0/0770/3f6d/4284/6d17ddfa60da4fab962e70b5b769766c@mid.png"></div>
       </div>
-      <div class="swiper-pagination"></div>
+      <div class="swiper-pagination swiper-pagination-white"></div>
       <div class="search_box">
           <div class="search">
               <img src="images/search.png">
-              <input type="text" placeholder="粘贴宝贝标题" name="search">
+              <input id="search" type="text" placeholder="搜索" name="search">
           </div>
           <img class="user" src="images/my_w.png">
       </div>
@@ -126,74 +120,52 @@
     <div class="like">
     </div>
      <div class="goodslist">
-         <div class="goods">
-            <img class="goodsImg" src="images/goods2.png">
-            <p>五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒</p>
-            <div class="price">
-                <span>市场价:￥38.8</span>
-                <span>月销量:2354</span>
-            </div>
-            <div class="rate">
-                <span>￥28.8</span>
-                <img src="images/q.png"/>
-           </div>
-         </div>
-         <div class="goods">
-            <img class="goodsImg" src="images/goods1.png">
-            <p>五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒</p>
-            <div class="price">
-                <span>市场价:￥38.8</span>
-                <span>月销量:2354</span>
-            </div>
-            <div class="rate">
-                <span>￥28.8</span>
-                <img src="images/q.png"/>
-           </div>
-         </div>         <div class="goods">
-            <img class="goodsImg" src="images/goods1.png">
-            <p>五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒</p>
-            <div class="price">
-                <span>市场价:￥38.8</span>
-                <span>月销量:2354</span>
-            </div>
-            <div class="rate">
-                <span>￥28.8</span>
-                <img src="images/q.png"/>
-           </div>
-         </div>         <div class="goods">
-            <img class="goodsImg" src="images/goods2.png">
-            <p>五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒</p>
-            <div class="price">
-                <span>市场价:￥38.8</span>
-                <span>月销量:2354</span>
-            </div>
-            <div class="rate">
-                <span>￥28.8</span>
-                <img src="images/q.png"/>
-           </div>
-         </div>         <div class="goods">
-            <img class="goodsImg" src="images/goods2.png">
-            <p>五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒五芳斋礼盒</p>
-            <div class="price">
-                <span>市场价:￥38.8</span>
-                <span>月销量:2354</span>
-            </div>
-            <div class="rate">
-                <span>￥28.8</span>
-                <img src="images/q.png"/>
-           </div>
-         </div>
-
      </div>
+      <div class="rx"></div>
+        <div class="rxgoodslist"></div>
+         <div class="loading">
+            <span>正在加载...</span>
+            <img src="images/load.gif">
+        </div>
    </div>
+    <ul class="navbar">
+        <li>
+            <a href="">
+            <span class="home"></span>
+            <span>首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.youtasc.com/shops/client/toDiscover.action">
+            <span class="find"></span>
+            <span>发现</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.youtasc.com/shops/client/toShoppingCart.action">
+            <span class="shop"></span>
+            <span>购物车</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.youtasc.com/shops/client/toMine.action">
+             <span class="my"></span>
+            <span>我的</span>
+            </a>
+        </li>
+    </ul>
 </body>
 <script type="text/javascript">
 window.onload=function(){
-        var mySwiper = new Swiper('.swiper-container', {
-        autoplay: 5000,//可选选项，自动滑动
-        pagination : '.swiper-pagination',
-        paginationClickable :true
-    })   
+    // var a_url = "http://www.youtasc.com"
+    $(".user").click(function(){
+        window.location.href = "http://www.youtasc.com/shops/client/toMine.action";
+    })
+     getBannerInfo()
+       var onoff = true; 
+       $(".toTop").click(function(){
+           $("html,body").animate({scrollTop:0}, 500);
+       }) 
     $($(document)).scroll(function() {
       if($(document).scrollTop()>=200){
          $(".search_box").css("background","#fff")
@@ -205,28 +177,62 @@ window.onload=function(){
         $(".user").attr("src","images/my_w.png")
       }
     });  
+      var pagenum = 3;
     $(document).scroll(function() {
-         //1030
-         if($(window).height()+$(document).scrollTop()>=$(document.body).height()-60){
-            console.log("加载")
+         if($(window).height()+$(document).scrollTop()>=$(document.body).height()){
+            $(".loading").show()
+            if (onoff) {
+                onoff=false
+                setTimeout(function(){
+                    pagenum++
+                    getHotGoods(pagenum)
+               },2000)
+
+            }
          }
 
       
  })
-} 
+    // to 详情
+$(".goods").click(function(){
+    let goodsId = $(this).attr("id")
+    console.log(goodsId)
+            window.location.href = "http://www.youtasc.com/shops/client/toGoodsDetail.action?goodsId=" + goodsId;    
+})
+    function toMine() {
+        if ('<%=userId%>' == 'null' || '<%=userId%>' == '') {
+            window.parent.parent.location.href = "http://www.youtasc.com/shops/client/toLogin.action";
+            return;
+        }
+        window.location.href = "http://www.youtasc.com/shops/client/toMine.action";
+    }
 
+//热门推荐
      function getHotGoodsInfo() {
         var goodsJsondata = {
-            rows: '-1'
+            page:1,
+            rows:20
         };
         $.ajax({
-            "url": "http://47.104.86.120/shops/client/hotGoodsList.action",
+            "url": "http://www.youtasc.com/shops/client/goodsListByTopCategory.action",
             "type": "post",
             "contentType": "application/json;charset=utf-8",
             "data": JSON.stringify(goodsJsondata),
             "dataType": "json",
             "success": function (data) {
-               console.log(data)
+               var goodsData = data.rows
+                for (i = 0; i < goodsData.length; i++) {
+                    var market_value = ((goodsData[i].goods_sn).slice(9,11)*2+goodsData[i].settlement_fee*1).toString()
+                     var search_ = parseInt(market_value).toString().substr(-1,1)
+                    if(parseInt(market_value)%2==0){
+                       var market_pir=parseInt(market_value).toString().replace(search_,"8")
+                    }else{
+                       var market_pir=parseInt(market_value).toString().replace(search_,"9")
+                    }
+                var coll =parseInt((goodsData[i].goods_sn).slice(10,11)*goodsData[i].settlement_fee)
+               let goodsTemplate = '<div class="goods" id='+goodsData[i].goods_id+'><img class="goodsImg" src="'+goodsData[i].goods_cover_url+'"><p class="goodsname"><span>'+goodsData[i].goods_name+'</span></p><div class="price"><span>市场价:￥'+market_pir+'</span><span></span></div><div class="rate"><span>￥'+goodsData[i].settlement_fee+'</span><p class="coll"><span>'+coll+'</span><img src="images/q.png"/></p></div></div>'
+               $(goodsTemplate).appendTo($('.goodslist'))
+             }
             },
             error: function () {
                 console.log("错误")
@@ -234,33 +240,121 @@ window.onload=function(){
         });
     }
 getHotGoodsInfo()
-
-
-
-   function goodsList(categoryId, goodsKeyWord, bySettlement, byOrderCount, rows, page) {
-       
+//热销
+     function getHotGoods(num) {
+        
         var goodsJsondata = {
-            categoryId: categoryId,
-            goodsInfoParam: goodsKeyWord,
-            rows: rows,
-            page: page,
-            orderBySettlement: bySettlement,
-            settlementOrderDesc: false,
-            orderByOrderedCount: byOrderCount
+            page:4,
+            rows:10
         };
         $.ajax({
-            "url": "/shops/client/goodsListByTopCategory.action",
+            "url": "http://www.youtasc.com/shops/client/goodsListByTopCategory.action",
             "type": "post",
             "contentType": "application/json;charset=utf-8",
             "data": JSON.stringify(goodsJsondata),
             "dataType": "json",
             "success": function (data) {
-              console.log(data)
+                onoff=true
+                $(".loading").hide()
+               var goodsData = data.rows
+               console.log(data)
+               if (num>=Math.ceil((data.total-20)/10)) {
+                $(".loading").html("<span>我也是有底线的<span>").show()}
+                for (i = 0; i < goodsData.length; i++) {
+                    var market_value = ((goodsData[i].goods_sn).slice(9,11)*2+goodsData[i].settlement_fee*1).toString()
+                     var search_ = parseInt(market_value).toString().substr(-1,1)
+                    if(parseInt(market_value)%2==0){
+                       var market_pir=parseInt(market_value).toString().replace(search_,"8")
+                    }else{
+                       var market_pir=parseInt(market_value).toString().replace(search_,"9")
+                    }
+                var coll =parseInt((goodsData[i].goods_sn).slice(10,11)*goodsData[i].settlement_fee)
+               let goodsTemplate = '<div class="goods" id='+goodsData[i].goods_id+'><img class="goodsImg" src="'+goodsData[i].goods_cover_url+'"><p class="goodsname"><span>'+goodsData[i].goods_name+'</span></p><div class="price"><span>市场价:￥'+market_pir+'</span><span></span></div><div class="rate"><span>￥'+goodsData[i].settlement_fee+'</span><p class="coll"><span>'+coll+'</span><img src="images/q.png"/><p></div></div>'
+               $(goodsTemplate).appendTo($('.rxgoodslist'))
+             }
             },
             error: function () {
-              console.log("错误")
+                console.log("错误")
             }
         });
     }
+getHotGoods(3)
+
+   
+      //搜索
+            $('#search').bind('keypress', function (event) {
+            if (event.keyCode == "13") {
+                var keyword = $(this).val() || '';
+                if (keyword == '') {
+                    $.alert('搜索关键字不能为空', '<div class="warning"><span class="icon icon_warning"></span></div>');
+                    return;
+                }
+                var search_type = 1;
+                if (search_type == '1') {
+                    //商品列表
+                    window.location.href = "http://www.youtasc.com/shops/client/toGoodsList.action?keyword=" + keyword;
+                } else if (search_type == '2') {
+                    //拼团列表
+                    window.location.href = "http://www.youtasc.com/shops/client/toPinTuanList.action?keyword=" + keyword;
+                }
+            }
+        });
+        //获取轮播图
+    function getBannerInfo() {
+        $.ajax({
+            "url": "http://www.youtasc.com/shops/client/activityList.action?location=10",
+            "type": "post",
+            "contentType": "application/json;charset=utf-8",
+            "dataType": "json",
+            "success": function (data) {
+                    var mySwiper = new Swiper('.swiper-container', {
+                            autoplay: 5000,//可选选项，自动滑动
+                            pagination : '.swiper-pagination',
+                            paginationClickable :true
+                        }) 
+                     for (i = 0; i < data.length; i++) {
+                    var template = '<div class="swiper-slide"><img src="'+data[i].path_url+'"></div>'
+                       $(template).appendTo($('.swiper-wrapper'))
+                     }
+                     mySwiper.appendSlide($('.swiper-wrapper'));
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("失败")
+            }
+        });
+    }
+    
+
+        
+    function getGuessLikeInfo() {
+        $.ajax({
+            "url": "http://www.youtasc.com/shops/client/activityList.action?location=40",
+            "type": "post",
+            "contentType": "application/json;charset=utf-8",
+            "dataType": "json",
+            "success": function (data) {
+               console.log(data)
+
+                    // for (i = 0; i < data.length; i++) {
+ 
+                    // }
+                
+            },
+            error: function () {
+               
+            }
+        });
+    }
+} 
   </script>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3c958aac5a62fb2642dc5b40fede8d5b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </html>

@@ -1,6 +1,5 @@
 .container{
 	background: #f6f6f6;
-	margin-bottom: 1rem;
 }
 *{margin:0;padding: 0;}
 .swiper-slide,.swiper-slide img{
@@ -208,7 +207,7 @@
     width: 1rem;
     height: 1rem;
     position: fixed;
-    bottom: 3rem;
+    bottom: .5rem;
     text-align: center;
     right: 0.3rem;
     border: 1px solid #dfd7d5;
@@ -219,47 +218,4 @@
     background: url(../images/user_14.png) no-repeat;
     background-size: cover;
     display: block;
-}
-.navbar{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	position: fixed;
-	bottom: 0;
-	z-index: 10001;
-	width: 100%;
-	background-color: #fff;
-	padding: .1rem 0;
-}
-.navbar li a{
-	display: flex;
-	flex-direction: column;
-	font-size: .28rem;
-	text-decoration: none;
-	color: #666;
-	align-items: center;
-}
-.navbar li:first-child a span{
-	color:#e83c17;
-}
-.navbar .home,.navbar .find,.navbar .shop,.navbar .my{
-    width: .48rem;
-	height: .48rem;
-
-}
-.navbar .home{
-	background:url(../images/icon_13_active.png) 0 0 no-repeat;
-	background-size: 100%;
-}
-.navbar .find{
-    background:url(../images/icon_18.png) 0 0 no-repeat;
-	background-size: 100%;
-}
-.navbar .shop{
-    background:url(../images/icon_19.png) 0 0 no-repeat;
-	background-size: 100%;
-}
-.navbar .my{
-    background:url(../images/icon_20.png) 0 0 no-repeat;
-	background-size: 100%;
 }
