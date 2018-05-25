@@ -29,7 +29,7 @@
     </div>
     <ul class="nav">
         <li>
-            <a href="http://www.youtasc.com/shops/client/toGoodsList.action?categoryId=b8a17abfd04a40739f17b1722f8e0f06">
+            <a href="http://www.youtasc.com/shops/client/toPinTuanList.action">
             <img src="images/pt.png">
             <text>拼团</text>
             </a>
@@ -93,7 +93,7 @@
         <img src="images/banner.png">
     </a>
     <div class="activity">
-        <a href="http://www.youtasc.com/shops/client/toGoodsList.action?categoryId=b8a17abfd04a40739f17b1722f8e0f06" class="activity_1">
+        <a href="http://www.youtasc.com/shops/client/toPinTuanList.action" class="activity_1">
             <img src="images/zzpt.png">
         </a>
         <a href="http://www.youtasc.com/shops/client/toGoodsList.action?categoryId=76b96799ca6545baa81a9ca76f71b03e" class="activity_1">
@@ -156,13 +156,21 @@
     </ul>
 </body>
 <script type="text/javascript">
-window.onload=function(){
-    // var a_url = "http://www.youtasc.com"
+     var onoff = true; 
+     var a_url = "http://www.youtasc.com"
+window.onload=function(){  
+    // $(".goods").each(function(index){
+    //     console.log(index)
+    //     if(index<=5){
+    //         $(".hot").show()
+    //     }
+    // })
+    
+    // 
     $(".user").click(function(){
         window.location.href = "http://www.youtasc.com/shops/client/toMine.action";
     })
      getBannerInfo()
-       var onoff = true; 
        $(".toTop").click(function(){
            $("html,body").animate({scrollTop:0}, 500);
        }) 
@@ -194,12 +202,13 @@ window.onload=function(){
       
  })
     // to 详情
-$(".goods").click(function(){
-    let goodsId = $(this).attr("id")
-    console.log(goodsId)
-            window.location.href = "http://www.youtasc.com/shops/client/toGoodsDetail.action?goodsId=" + goodsId;    
-})
-    function toMine() {
+
+    $(".goods").on('click',function(){
+        let goodsId = $(that).attr("id")
+                window.location.href = "http://www.youtasc.com/shops/client/toGoodsDetail.action?goodsId=" + goodsId;  
+    })
+}
+   function toMine() {
         if ('<%=userId%>' == 'null' || '<%=userId%>' == '') {
             window.parent.parent.location.href = "http://www.youtasc.com/shops/client/toLogin.action";
             return;
@@ -230,8 +239,11 @@ $(".goods").click(function(){
                        var market_pir=parseInt(market_value).toString().replace(search_,"9")
                     }
                 var coll =parseInt((goodsData[i].goods_sn).slice(10,11)*goodsData[i].settlement_fee)
-               let goodsTemplate = '<div class="goods" id='+goodsData[i].goods_id+'><img class="goodsImg" src="'+goodsData[i].goods_cover_url+'"><p class="goodsname"><span>'+goodsData[i].goods_name+'</span></p><div class="price"><span>市场价:￥'+market_pir+'</span><span></span></div><div class="rate"><span>￥'+goodsData[i].settlement_fee+'</span><p class="coll"><span>'+coll+'</span><img src="images/q.png"/></p></div></div>'
+               let goodsTemplate = '<a href="http://www.youtasc.com/shops/client/toGoodsDetail.action?goodsId='+goodsData[i].goods_id+'" class="goods" index="'+[i]+'"><img class="goodsImg" src="'+goodsData[i].goods_cover_url+'"><p class="goodsname"><span><b><i class="hot">热卖</i>'+goodsData[i].goods_name+'</b></span></p><div class="price"><span>市场价:￥'+market_pir+'</span><span></span></div><div class="rate"><span>￥'+goodsData[i].settlement_fee+'</span><p class="coll"><span>'+coll+'</span><img src="images/q.png"/></p></div></a>'
                $(goodsTemplate).appendTo($('.goodslist'))
+                if(i<=5){
+                            $(".hot").show()
+                        }
              }
             },
             error: function () {
@@ -248,7 +260,7 @@ getHotGoodsInfo()
             rows:10
         };
         $.ajax({
-            "url": "http://www.youtasc.com/shops/client/goodsListByTopCategory.action",
+            "url": a_url+"/shops/client/goodsListByTopCategory.action",
             "type": "post",
             "contentType": "application/json;charset=utf-8",
             "data": JSON.stringify(goodsJsondata),
@@ -257,7 +269,6 @@ getHotGoodsInfo()
                 onoff=true
                 $(".loading").hide()
                var goodsData = data.rows
-               console.log(data)
                if (num>=Math.ceil((data.total-20)/10)) {
                 $(".loading").html("<span>我也是有底线的<span>").show()}
                 for (i = 0; i < goodsData.length; i++) {
@@ -269,8 +280,11 @@ getHotGoodsInfo()
                        var market_pir=parseInt(market_value).toString().replace(search_,"9")
                     }
                 var coll =parseInt((goodsData[i].goods_sn).slice(10,11)*goodsData[i].settlement_fee)
-               let goodsTemplate = '<div class="goods" id='+goodsData[i].goods_id+'><img class="goodsImg" src="'+goodsData[i].goods_cover_url+'"><p class="goodsname"><span>'+goodsData[i].goods_name+'</span></p><div class="price"><span>市场价:￥'+market_pir+'</span><span></span></div><div class="rate"><span>￥'+goodsData[i].settlement_fee+'</span><p class="coll"><span>'+coll+'</span><img src="images/q.png"/><p></div></div>'
+               let goodsTemplate = '<a href="http://www.youtasc.com/shops/client/toGoodsDetail.action?goodsId='+goodsData[i].goods_id+'" class="goods"><img class="goodsImg" src="'+goodsData[i].goods_cover_url+'"><p class="goodsname"><span><b><i class="hot">热卖</i>'+goodsData[i].goods_name+'</b></span></p><div class="price"><span>市场价:￥'+market_pir+'</span><span></span></div><div class="rate"><span>￥'+goodsData[i].settlement_fee+'</span><p class="coll"><span>'+coll+'</span><img src="images/q.png"/></p></div></a>'
                $(goodsTemplate).appendTo($('.rxgoodslist'))
+                    if(i<=5){
+                            $(".hot").show()
+                        }
              }
             },
             error: function () {
@@ -302,18 +316,27 @@ getHotGoods(3)
         //获取轮播图
     function getBannerInfo() {
         $.ajax({
-            "url": "http://www.youtasc.com/shops/client/activityList.action?location=10",
+            "url": a_url+"/shops/client/activityList.action?location=10",
             "type": "post",
             "contentType": "application/json;charset=utf-8",
             "dataType": "json",
             "success": function (data) {
+                console.log(data)
                     var mySwiper = new Swiper('.swiper-container', {
                             autoplay: 5000,//可选选项，自动滑动
                             pagination : '.swiper-pagination',
                             paginationClickable :true
                         }) 
                      for (i = 0; i < data.length; i++) {
-                    var template = '<div class="swiper-slide"><img src="'+data[i].path_url+'"></div>'
+
+                       if(data[i].type == '1'&&data[i].type_param != ''){
+                           var template = '<div class="swiper-slide" onclick="toWebsite(\''+data[i].type_param+'\')"><img src="'+data[i].path_url+'"></div>'
+                       }else if(data[i].type == '2' && data[i].type_param != ''){
+                           var template = '<div class="swiper-slide" onclick="toGoodsDetail(\''+data[i].type_param+'\')"><img src="'+data[i].path_url+'"></div>'
+                       }else if(data[i].type == '3' && data[i].type_param != ''){
+                         var template = '<div class="swiper-slide" onclick="toPinTuanDetail(\''+data[i].type_param+'\')"><img src="'+data[i].path_url+'"></div>'
+                       }
+
                        $(template).appendTo($('.swiper-wrapper'))
                      }
                      mySwiper.appendSlide($('.swiper-wrapper'));
@@ -324,28 +347,20 @@ getHotGoods(3)
         });
     }
     
-
-        
-    function getGuessLikeInfo() {
-        $.ajax({
-            "url": "http://www.youtasc.com/shops/client/activityList.action?location=40",
-            "type": "post",
-            "contentType": "application/json;charset=utf-8",
-            "dataType": "json",
-            "success": function (data) {
-               console.log(data)
-
-                    // for (i = 0; i < data.length; i++) {
- 
-                    // }
-                
-            },
-            error: function () {
-               
-            }
-        });
+    function toWebsite(url) {
+        window.location.href = url;
     }
-} 
+    //详情
+      function toGoodsDetail(goodsId) {
+        window.location.href = a_url+"/shops/client/toGoodsDetail.action?goodsId=" + goodsId;
+    }
+    //拼团
+        function toPinTuanDetail(pintuan_id) {
+        window.location.href = a_url+"/shops/client/toPinTuanDetail.action?pinTuanId=" + pintuan_id;
+    }
+        
+
+
   </script>
   <script>
 var _hmt = _hmt || [];
